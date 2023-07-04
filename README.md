@@ -12,6 +12,9 @@
 - nodeMCU(ESP8266)
 - GPIO
 
+## 회로 구성
+![Arduino Design](https://raw.githubusercontent.com/PKNU-IOT3/bustop_Arduino/main/images/arduino_design.png)
+
 ## 로직
 - DB에 저장된 정보 실시간 반영
 - 승객 탑승 시 DB에 반영(탑승대기인원 감소 및 현재 탑승인원 증가 / 터치 센서 사용)
