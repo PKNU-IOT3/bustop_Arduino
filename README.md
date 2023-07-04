@@ -12,16 +12,19 @@
 - nodeMCU(ESP8266)
 - GPIO
 
-## 회로 설계
-- 추후 제작 후 반영
-
-### 로직
+## 로직
 - DB에 저장된 정보 실시간 반영
 - 승객 탑승 시 DB에 반영(탑승대기인원 감소 및 현재 탑승인원 증가 / 터치 센서 사용)
 - 버스의 정차 여부 및 인원 변화에 따라 LED / 부저로 사용자에게 알림
 
+## 참고 자료
+- MySQL 연결 헤더
+  - [MySQL](https://github.com/ChuckBell/MySQL_Connector_Arduino)
+- wifi / MySQL 연결
+  - [wifi](https://nan-sso-gong.tistory.com/9?category=958220)
+  - [MySQL](https://nan-sso-gong.tistory.com/10?category=958220)
 
-### 22.06.30 소스코드 구현
+## 22.06.30 소스코드 구현
 - ESP8266 모듈을 이용한 wifi 연결
 ![DB Connection](https://raw.githubusercontent.com/PKNU-IOT3/bustop_Arduino/main/images/DBconnection.png)
 
@@ -101,8 +104,8 @@ MySQL_Cursor *cur_mem = new MySQL_Cursor(&conn);
 ![DBSelect02](https://raw.githubusercontent.com/PKNU-IOT3/bustop_Arduino/main/images/DBselect02.png)
 
 - RGB LED 연결 및 상황에 따른 제어 추가
-  - Arduino GPIO 핀 사용 문제 발생
-![arduinoPin](https://raw.githubusercontent.com/PKNU-IOT3/bustop_Arduino/main/images/arduino_pin.png)
+  - nodeMCU GPIO 핀 사용 문제 발생
+  - ![arduinoPin](https://raw.githubusercontent.com/PKNU-IOT3/bustop_Arduino/main/images/arduino_pin.png)
   - 다음과 같은 구성에서 GPIO4/GPIO5/GPIO12/GPIO13/GPIO14 5개의 PIN만 범용으로 사용 가능하여 해당 PIN 만 사용하도록 수정하여 해결
 ```c
 if (bus_cnt > 0)                            // 탑승인원 0명 이상인경우 (승객 탑승o)
