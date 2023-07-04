@@ -17,6 +17,12 @@
 - 승객 탑승 시 DB에 반영(탑승대기인원 감소 및 현재 탑승인원 증가 / 터치 센서 사용)
 - 버스의 정차 여부 및 인원 변화에 따라 LED / 부저로 사용자에게 알림
 
+## 참고 자료
+- MySQL 연결 헤더
+  - [MySQL](https://github.com/ChuckBell/MySQL_Connector_Arduino)
+- wifi / MySQL 연결
+  - [wifi](https://nan-sso-gong.tistory.com/9?category=958220)
+  - [MySQL](https://nan-sso-gong.tistory.com/10?category=958220)
 
 ## 22.06.30 소스코드 구현
 - ESP8266 모듈을 이용한 wifi 연결
