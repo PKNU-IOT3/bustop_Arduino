@@ -101,7 +101,7 @@ MySQL_Cursor *cur_mem = new MySQL_Cursor(&conn);
 ![DBSelect02](https://raw.githubusercontent.com/PKNU-IOT3/bustop_Arduino/main/images/DBselect02.png)
 
 - RGB LED 연결 및 상황에 따른 제어 추가
-  - Arduino GPIO 핀 사용 문제 발생
+  - nodeMCU GPIO 핀 사용 문제 발생
 ![arduinoPin](https://raw.githubusercontent.com/PKNU-IOT3/bustop_Arduino/main/images/arduino_pin.png)
   - 다음과 같은 구성에서 GPIO4/GPIO5/GPIO12/GPIO13/GPIO14 5개의 PIN만 범용으로 사용 가능하여 해당 PIN 만 사용하도록 수정하여 해결
 ```c
