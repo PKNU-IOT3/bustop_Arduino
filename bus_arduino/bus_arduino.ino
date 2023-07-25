@@ -4,13 +4,13 @@
 #include <stdio.h>
 
 // wifi 연결셋팅부
-const char* ssid = "iotzone02";
-const char* password = "1234567890";
+const char* ssid = "<wifi>";
+const char* password = "<wifi_pw>";
 
 //sql 연결셋팅부
-IPAddress server_addr(210, 119, 12, 69); 
-char user[] = "root";                    
-char password_[] = "12345";
+IPAddress server_addr(<ip>); 
+char user[] = "<db_username>";                    
+char password_[] = "<db_pw>";
 
 // wifi 및 DB 연결
 WiFiClient client;
@@ -18,9 +18,9 @@ MySQL_Connection conn(&client);
 MySQL_Cursor* cursor;
 
 // SQL문 
-char SELECT_SQL[] = "SELECT bus_cnt, bus_NowIn FROM bus.bus_table WHERE bus_num='100-1'";
-char UPDATE_SQL[] = "UPDATE bus.bus_table SET bus_cnt = %d WHERE bus_num = '100-1'";
-char UPDATE_NOW_SQL[] = "UPDATE bus.bus_table SET bus_NowIn = %d WHERE bus_num = '100-1'";
+char SELECT_SQL[] = "SELECT bus_cnt, bus_NowIn FROM bus.bus_table WHERE bus_num='<버스번호>'";
+char UPDATE_SQL[] = "UPDATE bus.bus_table SET bus_cnt = %d WHERE bus_num = '<버스번호>'";
+char UPDATE_NOW_SQL[] = "UPDATE bus.bus_table SET bus_NowIn = %d WHERE bus_num = '<버스번호>'";
 char query[128];
 
 // 전역변수 지정
@@ -29,6 +29,7 @@ int now_cnt = 0;
 int btn = 0;
 int state = 0;
 int flag = 1;
+int db_state = 0;
 
 void setup() {
   Serial.begin(115200);
@@ -44,17 +45,23 @@ void setup() {
 
   Serial.print("Connecting to SQL...  ");
   
-  // DB연결
-  if (conn.connect(server_addr, 3306, user, password_)) {
-    Serial.println("OK.");
-  }
-  else {
-    Serial.println("FAILED.");
-  }
-  cursor = new MySQL_Cursor(&conn);
+
 }
 
 void loop() {
+
+  if ( db_state == 0){
+    // DB연결
+    if (conn.connect(server_addr, 3306, user, password_)) {
+      Serial.println("OK.");
+      db_state = 1;
+    }
+    else {
+      Serial.println("FAILED.");
+    }
+    cursor = new MySQL_Cursor(&conn);
+  }
+
   delay(500);
   MySQL_Cursor *cur_mem = new MySQL_Cursor(&conn);
   // DB내용 가져오기
@@ -105,13 +112,13 @@ void loop() {
   {
     digitalWrite(4, HIGH);                    // RED
     digitalWrite(5, HIGH);
-    digitalWrite(12, LOW);
+    digitalWrite(14, LOW);
   }
   else                                        // 탑승인원 0명 (승객 탑승x)
   {
     digitalWrite(4, LOW);                     // BLUE
     digitalWrite(5, HIGH);
-    digitalWrite(12, HIGH);
+    digitalWrite(14, HIGH);
   }
 
   if (flag == 1){                             // 상태변화하는 경우 부저울림
@@ -139,8 +146,8 @@ void Wifi_connect() {
 // 부저
 void buzz(){
   Serial.println("ON");
-  tone(14, 277);
+  tone(12, 900);
   delay(100);
-  noTone(14);
+  noTone(12);
   flag = 0;
 }
