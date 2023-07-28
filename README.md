@@ -153,4 +153,7 @@ if (state == HIGH) {                        // state의 값이 HIGH라면 (터�
   - setup문에 있을경우 연결 실패시 발생하는 예외처리
     
 ## 23.07.28 아두이노를 이용한 버스 모형 구현
+- 구현
+  - 터치 센서를 누르면 탑승 대기 인원이 감소
+  - 탑승 대기 인원이 다 탑승하면 파란불로 바뀌면서 출발
 ![구현화면](https://github.com/PKNU-IOT3/bustop_Arduino/blob/main/images/Bus_Arduino.gif)
