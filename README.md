@@ -153,4 +153,5 @@ if (state == HIGH) {                        // state의 값이 HIGH라면 (터�
   - setup문에 있을경우 연결 실패시 발생하는 예외처리
     
 ## 23.07.28 아두이노를 이용한 버스 모형 구현
-img="https://github.com/PKNU-IOT3/bustop_Arduino/blob/main/images/Bus_Arduino.gif"
+- 구현 화면
+![구현 화면](https://github.com/PKNU-IOT3/bustop_Arduino/blob/main/images/Bus_Arduino.gif)
