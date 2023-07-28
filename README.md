@@ -154,4 +154,4 @@ if (state == HIGH) {                        // state의 값이 HIGH라면 (터�
     
 ## 23.07.28 아두이노를 이용한 버스 모형 구현
 - 구현 화면
-![구현 화면](https://github.com/PKNU-IOT3/bustop_Arduino/blob/main/images/Bus_Arduino.gif)
+![](https://github.com/PKNU-IOT3/bustop_Arduino/blob/main/images/Bus_Arduino.gif)
